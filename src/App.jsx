@@ -124,7 +124,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-['Inter',sans-serif] text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white">
+    <div className="min-h-screen bg-white font-sans text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white">
       {/* 1. TOP ANNOUNCEMENT BANNER */}
       <div 
         onClick={() => setActiveModal('assessment')}
