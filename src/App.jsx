@@ -59,11 +59,41 @@ export default function App() {
   ];
 
   const partners = [
-    { name: "Tailscale", url: "https://tailscale.com/", logo: "https://framerusercontent.com/images/vPS8HRn4030cWdRwXMhmPyL34.svg?width=298&height=55" },
-    { name: "Arista", url: "https://www.arista.com/", logo: "https://framerusercontent.com/images/9RtFd9g0oo8PlsJ6Scew7ubcNyk.svg?width=1115&height=175" },
-    { name: "Fortinet", url: "https://www.fortinet.com/", logo: "https://framerusercontent.com/images/KsIxTWeD6TwF2P8FGyBNY04Pc.svg?width=1024&height=124" },
-    { name: "Peplink", url: "https://www.peplink.com/", logo: "https://framerusercontent.com/images/naMQzk01MXqPeVk6BR9sDeG5seg.svg?width=1012&height=512" },
-    { name: "Cloudflare", url: "https://www.cloudflare.com/", logo: "https://framerusercontent.com/images/A8aq474bUOBd7TowD751Zh05P8U.svg?width=404&height=134" }
+    {
+      name: "Tailscale",
+      url: "https://tailscale.com/",
+      logo: "https://framerusercontent.com/images/vPS8HRn4030cWdRwXMhmPyL34.svg?width=298&height=55",
+      width: 141,
+      height: 26
+    },
+    {
+      name: "Arista",
+      url: "https://www.arista.com/",
+      logo: "https://framerusercontent.com/images/9RtFd9g0oo8PlsJ6Scew7ubcNyk.svg?width=1115&height=175",
+      width: 126,
+      height: 20
+    },
+    {
+      name: "Fortinet",
+      url: "https://www.fortinet.com/",
+      logo: "https://framerusercontent.com/images/KsIxTWeD6TwF2P8FGyBNY04Pc.svg?width=1024&height=124",
+      width: 150,
+      height: 18
+    },
+    {
+      name: "Peplink",
+      url: "https://www.peplink.com/",
+      logo: "https://framerusercontent.com/images/naMQzk01MXqPeVk6BR9sDeG5seg.svg?width=1012&height=512",
+      width: 79,
+      height: 40
+    },
+    {
+      name: "Cloudflare",
+      url: "https://www.cloudflare.com/",
+      logo: "https://framerusercontent.com/images/A8aq474bUOBd7TowD751Zh05P8U.svg?width=404&height=134",
+      width: 106,
+      height: 35
+    }
   ];
 
   const caseStudies = [
@@ -128,7 +158,7 @@ export default function App() {
       {/* 1. TOP ANNOUNCEMENT BANNER */}
       <div 
         onClick={() => setActiveModal('assessment')}
-        className="w-full bg-[#0b5cd5] text-white py-2.5 px-4 text-center cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1.5 z-20 group"
+        className="w-full bg-[#0b5cd5] text-white py-3.5 px-4 text-center cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1.5 z-20 group"
       >
         <span className="text-[15px] font-[500] tracking-[-0.02em] leading-[1.4em]">
           Speak to one of our engineers to get a free firewall assessment →
@@ -245,25 +275,26 @@ export default function App() {
       </section>
 
       {/* 4. PARTNERS SECTION */}
-      <section className="border-t border-[#e8eaed] py-12">
-        <div className="max-w-[1140px] mx-auto px-6 text-center">
-          <p className="text-[14px] font-[600] uppercase tracking-[0.08em] text-[#4b5563] mb-8">
+      <section className="bg-white pt-2 pb-20 px-6">
+        <div className="max-w-[1140px] mx-auto flex flex-col items-center justify-center gap-[32px]">
+          <p className="text-[16px] font-[400] tracking-[-0.02em] leading-[1.4em] text-[#4b5563] text-center">
             Partnered with leading vendors globally
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          <div className="flex flex-wrap items-center justify-center gap-[56px] w-full">
             {partners.map((p) => (
               <a
                 key={p.name}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-80 hover:opacity-100 transition-opacity flex items-center justify-center"
+                className="flex items-center justify-center hover:opacity-75 transition-opacity"
+                style={{ width: `${p.width}px`, height: `${p.height}px` }}
               >
                 <img
                   src={p.logo}
                   alt={p.name}
-                  className="h-6 sm:h-7 w-auto max-w-[120px] object-contain grayscale hover:grayscale-0 transition-all"
+                  className="w-full h-full object-contain"
                 />
               </a>
             ))}
