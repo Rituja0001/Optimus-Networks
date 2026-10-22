@@ -422,54 +422,60 @@ export default function App() {
       </section>
 
       {/* 8. ENGINEERS' DIARY (ARTICLES) */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-[1140px] mx-auto px-6">
-          {/* Section Header - Centered */}
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
-              ARTICLES
-            </span>
-            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
-              Engineers’ Diary
-            </h2>
-            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
-              How we put leading technology to work, from secure remote access to<br className="hidden sm:inline" /> always-on connectivity.
-            </p>
-          </div>
+      <section className="pt-[64px] pb-[64px] sm:pt-[110px] sm:pb-[104px] px-[20px] sm:px-[30px] bg-white flex flex-col items-center gap-[40px] sm:gap-[56px]">
+        {/* Section Header - Centered */}
+        <div className="max-w-[680px] w-full mx-auto text-center flex flex-col items-center gap-[16px]">
+          <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] leading-[1.4em] uppercase block">
+            ARTICLES
+          </span>
+          <h2 className="text-[28px] sm:text-[40px] font-[600] tracking-[-0.03em] text-[#0a0a0a] leading-[1.2em] sm:leading-[1.15em] [text-wrap:balance]">
+            Engineers’ Diary
+          </h2>
+          <p className="text-[18px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] w-[92%] sm:w-[78%] max-w-[530px] mx-auto [text-wrap:balance]">
+            How we put leading technology to work, from<br className="hidden sm:inline" /> secure remote access to always-on connectivity.
+          </p>
+        </div>
 
-          {/* Unified 3-Column Container with 1px dividers and 16px rounded outer border */}
-          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-[1px] w-full shadow-none">
-            {articles.map((art) => (
-              <div
-                key={art.id}
-                onClick={() => setActiveModal(art.id)}
-                className="bg-white flex flex-col justify-between cursor-pointer group"
-              >
-                <div className="h-[210px] overflow-hidden bg-slate-100">
-                  <img
-                    src={art.image}
-                    alt={art.title}
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-                  />
-                </div>
+        {/* Unified 3-Column Container with 1px dividers and 16px rounded outer border */}
+        <div className="max-w-[1140px] w-full mx-auto bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-[1px] shadow-none">
+          {articles.map((art) => (
+            <div
+              key={art.id}
+              onClick={() => setActiveModal(art.id)}
+              className="bg-white flex flex-col justify-start items-stretch cursor-pointer group"
+            >
+              {/* Card Image */}
+              <div className="w-full h-[220px] relative overflow-hidden bg-slate-100 flex-none">
+                <img
+                  src={art.image}
+                  alt={art.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300 block"
+                />
+              </div>
 
-                <div className="p-[32px_28px] sm:p-[36px_32px] flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] mb-3 leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
+              {/* Card Content with 1px top border and exact spacing */}
+              <div className="border-t border-[#e8eaed] p-[28px_28px_32px] flex-1 flex flex-col justify-between gap-[14px]">
+                <div className="flex flex-col gap-[14px]">
+                  <div className="min-h-[52px]">
+                    <h3 className="text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
                       {art.title}
                     </h3>
-                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] mb-8">
+                  </div>
+                  <div className="min-h-[72px]">
+                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em]">
                       {art.description}
                     </p>
                   </div>
+                </div>
 
-                  <span className="text-[16px] font-[600] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] group-hover:text-[#0b5cd5] group-hover:decoration-[#0b5cd5] transition-colors">
+                <div>
+                  <span className="text-[16px] font-[600] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] group-hover:text-[#0b5cd5] group-hover:decoration-[#0b5cd5] transition-colors inline-block">
                     Read article
                   </span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
