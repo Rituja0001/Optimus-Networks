@@ -303,7 +303,7 @@ export default function App() {
       </section>
 
       {/* 5. SERVICES & SOLUTIONS */}
-      <section id="solutions" className="py-16 sm:py-24 bg-white">
+      <section id="solutions" className="py-20 sm:py-24 bg-[#fafafa] border-t border-b border-[#e8eaed]">
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
           <div className="max-w-2xl mx-auto text-center mb-16">
@@ -318,8 +318,8 @@ export default function App() {
             </p>
           </div>
 
-          {/* Unified 4x2 Grid Container with 1px dividers and 20px rounded outer border */}
-          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] w-full shadow-none">
+          {/* Unified 4x2 Grid Container with 1px dividers, pure white boxes, and 16px rounded outer border */}
+          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] w-full shadow-xs">
             {services.map((srv, idx) => (
               <div
                 key={idx}
