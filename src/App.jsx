@@ -124,60 +124,66 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white">
+    <div className="min-h-screen bg-white text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white">
       {/* 1. TOP ANNOUNCEMENT BANNER */}
       <div 
         onClick={() => setActiveModal('assessment')}
-        className="w-full bg-[#0b5cd5] text-white py-2 px-4 text-center text-[12.5px] font-medium tracking-tight cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1 z-20 group"
+        className="w-full bg-[#0b5cd5] text-white py-2.5 px-4 text-center cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1.5 z-20 group"
       >
-        <span>Speak to one of our engineers to get a free firewall assessment</span>
-        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+        <span className="text-[15px] font-[500] tracking-[-0.02em] leading-[1.4em]">
+          Speak to one of our engineers to get a free firewall assessment →
+        </span>
       </div>
 
       {/* 2. NAVBAR */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#e8eaed]">
-        <div className="max-w-[1140px] mx-auto px-6 h-[68px] flex items-center justify-between">
+        <div className="max-w-[1140px] mx-auto px-6 h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center text-[22px] leading-none tracking-[-0.03em] select-none">
-            <span className="font-normal text-[#0b5cd5]">Optimus</span>
-            <span className="font-semibold text-[#0b5cd5]">Networks</span>
+          <a href="#" className="flex items-center text-[25px] leading-none tracking-[-0.03em] select-none text-[#0b5cd5]">
+            <span className="font-[400]">Optimus</span>
+            <span className="font-[600]">Networks</span>
           </a>
 
-          {/* Right actions */}
-          <div className="flex items-center gap-3">
+          {/* Right Navigation Actions */}
+          <div className="flex items-center gap-[24px]">
+            {/* Support Link */}
             <a
               href="tel:+443330164050"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#e8eaed] bg-white hover:bg-slate-50 text-[12.5px] font-medium text-[#1f2328] transition-colors"
+              className="flex items-center gap-2 text-[16px] font-[500] tracking-[-0.02em] leading-[1.4em] text-[#0a0a0a] hover:text-[#0b5cd5] transition-colors select-none"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              Support
+              <div className="relative w-[8px] h-[8px]">
+                <span className="animate-pulse-ring absolute inset-0 rounded-full bg-[#22c55e]"></span>
+                <span className="absolute inset-0 rounded-full bg-[#22c55e] shadow-[0_0_0_2px_rgba(255,255,255,0.9)]"></span>
+              </div>
+              <span>Support</span>
             </a>
 
+            {/* Contact Sales Button */}
             <button
               onClick={() => setActiveModal('contact')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white text-[12.5px] font-medium transition-colors cursor-pointer"
+              className="min-h-[44px] px-[12px] gap-[8px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
             >
-              Contact Sales <span>→</span>
+              <span>Contact Sales</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3.5L10.5 8 6 12.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
           </div>
         </div>
       </header>
 
       {/* 3. HERO SECTION */}
-      <section className="max-w-[1140px] mx-auto px-6 pt-16 pb-16">
+      <section className="max-w-[1140px] mx-auto px-6 pt-16 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7">
-            <h1 className="text-[40px] sm:text-[50px] lg:text-[56px] font-semibold tracking-[-0.035em] text-[#0a0a0a] leading-[1.12]">
+            <h1 className="text-[38px] sm:text-[48px] lg:text-[50px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em]">
               Global <span className="text-[#0b5cd5]">connectivity</span><br />
               <span className="text-[#0b5cd5]">solutions</span> designed to<br />
-              be <span className="underline decoration-2 underline-offset-6">simple and secure.</span>
+              be <span className="underline decoration-[#0a0a0a] decoration-[1.5px] underline-offset-[5px]">simple and secure.</span>
             </h1>
 
-            <p className="mt-6 text-[15px] sm:text-[16px] text-[#4b5563] leading-[1.5] max-w-lg font-normal">
+            <p className="mt-6 text-[18px] text-[#1f2328] font-[400] tracking-[-0.005em] leading-[1.6em] max-w-[520px]">
               Connectivity redefined through engineering discipline, a culture of continual quality, and intelligent automation.
             </p>
 
@@ -188,9 +194,12 @@ export default function App() {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="h-[40px] px-5 rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-medium text-[14px] inline-flex items-center gap-1 cursor-pointer transition-colors shadow-xs"
+                className="min-h-[44px] px-[12px] gap-[10px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
-                Solutions <span>→</span>
+                <span>Solutions</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 3.5L10.5 8 6 12.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
 
               <button
@@ -198,22 +207,21 @@ export default function App() {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="h-[40px] px-5 rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-medium text-[14px] inline-flex items-center justify-center cursor-pointer transition-colors shadow-xs"
+                className="min-h-[44px] px-[12px] rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-[500] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
-                Find out more
+                <span>Find out more</span>
               </button>
             </div>
           </div>
 
-          {/* Right Image Card with subtle badge */}
+          {/* Right Image Card */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-2xl overflow-hidden border border-[#e8eaed] bg-white shadow-xs aspect-4/3 lg:aspect-auto lg:h-[380px]">
+            <div className="relative rounded-[16px] overflow-hidden border border-[#e8eaed] bg-white shadow-xs aspect-4/3 lg:aspect-auto lg:h-[380px]">
               <img
                 src="https://framerusercontent.com/images/PmHnsCbroKk29n1lRAkBqY2oXc.jpg?width=1200"
                 alt="Optimus Engineering"
                 className="w-full h-full object-cover object-center"
               />
-              {/* Subtle top-right watermark icon badge */}
               <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-xs text-white p-1 rounded">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
@@ -227,7 +235,7 @@ export default function App() {
       {/* 4. PARTNERS SECTION */}
       <section className="border-t border-[#e8eaed] py-12">
         <div className="max-w-[1140px] mx-auto px-6 text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4b5563] mb-8">
+          <p className="text-[14px] font-[600] uppercase tracking-[0.08em] text-[#4b5563] mb-8">
             Partnered with leading vendors globally
           </p>
 
@@ -256,13 +264,13 @@ export default function App() {
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
           <div className="max-w-xl mx-auto text-center mb-14">
-            <span className="text-[11.5px] font-semibold text-[#0b5cd5] tracking-[0.1em] uppercase mb-2 block">
+            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-2 block">
               SOLUTIONS
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-semibold tracking-[-0.03em] text-[#0a0a0a] leading-tight mb-3">
+            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-3">
               Services & Solutions
             </h2>
-            <p className="text-[15px] text-[#4b5563] leading-relaxed">
+            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em]">
               A connectivity service partner that replaces complexity with clarity.
             </p>
           </div>
@@ -272,16 +280,16 @@ export default function App() {
             {services.map((srv, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white border border-[#e8eaed] hover:border-[#0b5cd5]/40 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                className="p-[32px_24px] rounded-[16px] bg-white border border-[#e8eaed] hover:border-[#0b5cd5]/40 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4">
                     <img src={srv.icon} alt="" className="w-6 h-6 object-contain" />
                   </div>
-                  <h3 className="text-[16px] font-semibold text-[#0a0a0a] tracking-tight mb-2 leading-snug">
+                  <h3 className="text-[16px] font-[600] text-[#0a0a0a] tracking-[-0.01em] mb-2 leading-[1.3em]">
                     {srv.title}
                   </h3>
-                  <p className="text-[13px] text-[#4b5563] leading-[1.55]">
+                  <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em]">
                     {srv.description}
                   </p>
                 </div>
@@ -296,13 +304,13 @@ export default function App() {
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
           <div className="max-w-xl mx-auto text-center mb-14">
-            <span className="text-[11.5px] font-semibold text-[#0b5cd5] tracking-[0.1em] uppercase mb-2 block">
+            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-2 block">
               USE CASES
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-semibold tracking-[-0.03em] text-[#0a0a0a] leading-tight mb-3">
+            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-3">
               Case Studies
             </h2>
-            <p className="text-[15px] text-[#4b5563] leading-relaxed">
+            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em]">
               How we put leading technology to work, from secure remote access to always-on connectivity.
             </p>
           </div>
@@ -312,7 +320,7 @@ export default function App() {
             {caseStudies.map((cs) => (
               <div
                 key={cs.id}
-                className="bg-[#fcfdfe] border border-[#e8eaed] rounded-2xl p-8 flex flex-col justify-between hover:shadow-md transition-all"
+                className="bg-[#fcfdfe] border border-[#e8eaed] rounded-[16px] p-[40px] flex flex-col justify-between hover:shadow-md transition-all"
               >
                 <div>
                   {/* Brand Tag at top */}
@@ -326,18 +334,18 @@ export default function App() {
                   </div>
 
                   {/* Large Metric */}
-                  <div className="text-[44px] sm:text-[48px] font-semibold tracking-[-0.04em] text-[#0a0a0a] leading-none mb-4">
+                  <div className="text-[50px] font-[500] tracking-[-0.045em] text-[#000000] leading-[1em] mb-4">
                     {cs.metric}
                   </div>
 
-                  <p className="text-[14px] text-[#4b5563] leading-[1.6] mb-8">
+                  <p className="text-[18px] font-[400] text-[#4b5563] tracking-[-0.01em] leading-[1.45em] mb-8">
                     {cs.description}
                   </p>
                 </div>
 
                 <button
                   onClick={() => setActiveModal(cs.id)}
-                  className="text-[13px] font-medium text-[#0b5cd5] hover:underline text-left cursor-pointer"
+                  className="text-[16px] font-[500] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] text-left cursor-pointer hover:text-[#0b5cd5] hover:decoration-[#0b5cd5] transition-colors"
                 >
                   Read case study
                 </button>
@@ -350,7 +358,7 @@ export default function App() {
       {/* 7. HIGH IMPACT BRAND STATEMENT (CENTERED) */}
       <section className="border-t border-[#e8eaed] py-24 bg-white">
         <div className="max-w-[920px] mx-auto px-6 text-center">
-          <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-medium text-[#0a0a0a] leading-[1.3] tracking-[-0.03em]">
+          <h2 className="text-[28px] sm:text-[34px] font-[600] text-[#0a0a0a] leading-[1.2em] tracking-[-0.03em]">
             Optimus designs and delivers connectivity solutions by bringing structure, consistency, and engineering discipline to every solution,{" "}
             <span className="text-[#0b5cd5]">ensuring quality is never compromised,</span>{" "}
             even as customer needs evolve.
@@ -363,13 +371,13 @@ export default function App() {
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
           <div className="max-w-xl mx-auto text-center mb-14">
-            <span className="text-[11.5px] font-semibold text-[#0b5cd5] tracking-[0.1em] uppercase mb-2 block">
+            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-2 block">
               ARTICLES
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-semibold tracking-[-0.03em] text-[#0a0a0a] leading-tight mb-3">
+            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-3">
               Engineers’ Diary
             </h2>
-            <p className="text-[15px] text-[#4b5563] leading-relaxed">
+            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em]">
               How we put leading technology to work, from secure remote access to always-on connectivity.
             </p>
           </div>
@@ -380,9 +388,9 @@ export default function App() {
               <div
                 key={art.id}
                 onClick={() => setActiveModal(art.id)}
-                className="bg-white border border-[#e8eaed] rounded-2xl overflow-hidden hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
+                className="bg-white border border-[#e8eaed] rounded-[16px] overflow-hidden hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
               >
-                <div className="h-48 overflow-hidden bg-slate-100">
+                <div className="h-[200px] overflow-hidden bg-slate-100">
                   <img
                     src={art.image}
                     alt={art.title}
@@ -392,15 +400,15 @@ export default function App() {
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-[17px] font-semibold text-[#0a0a0a] tracking-tight mb-2.5 leading-snug group-hover:text-[#0b5cd5] transition-colors">
+                    <h3 className="text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] mb-3 leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
                       {art.title}
                     </h3>
-                    <p className="text-[13px] text-[#4b5563] leading-[1.6] mb-6">
+                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] mb-6">
                       {art.description}
                     </p>
                   </div>
 
-                  <span className="text-[13px] font-medium text-[#0b5cd5] hover:underline">
+                  <span className="text-[16px] font-[600] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] group-hover:text-[#0b5cd5] group-hover:decoration-[#0b5cd5] transition-colors">
                     Read article
                   </span>
                 </div>
@@ -412,12 +420,12 @@ export default function App() {
 
       {/* 9. FOOTER */}
       <footer className="border-t border-[#e8eaed] bg-white py-8">
-        <div className="max-w-[1140px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#4b5563]">
-          <p className="font-semibold tracking-wider text-[#0a0a0a]">OPTIMUS NETWORKS LTD</p>
+        <div className="max-w-[1140px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4b5563]">
+          <p className="font-[600] tracking-[0.05em] text-[#0a0a0a]">OPTIMUS NETWORKS LTD</p>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setActiveModal('terms')}
-              className="hover:text-[#0b5cd5] transition-colors cursor-pointer"
+              className="font-[500] hover:text-[#0b5cd5] transition-colors cursor-pointer"
             >
               Terms
             </button>
@@ -428,7 +436,7 @@ export default function App() {
       {/* 10. INTERACTIVE MODALS */}
       {activeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-7 max-h-[90vh] overflow-y-auto border border-[#e8eaed] shadow-2xl relative">
+          <div className="bg-white rounded-[16px] max-w-lg w-full p-7 max-h-[90vh] overflow-y-auto border border-[#e8eaed] shadow-2xl relative">
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors cursor-pointer text-sm font-bold"
@@ -439,13 +447,13 @@ export default function App() {
             {/* Assessment or Contact Modal */}
             {(activeModal === 'assessment' || activeModal === 'contact') && (
               <div>
-                <span className="text-[11px] font-semibold text-[#0b5cd5] uppercase tracking-wider block mb-1">
+                <span className="text-[11px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">
                   {activeModal === 'assessment' ? 'Free Assessment' : 'Contact Sales'}
                 </span>
-                <h3 className="text-[22px] font-bold text-[#0a0a0a] mb-2">
+                <h3 className="text-[22px] font-[700] text-[#0a0a0a] mb-2">
                   {activeModal === 'assessment' ? 'Get a Free Firewall Assessment' : 'Speak to an Optimus Engineer'}
                 </h3>
-                <p className="text-[13px] text-[#4b5563] mb-5">
+                <p className="text-[14px] text-[#4b5563] mb-5 leading-relaxed">
                   Direct consultation with our senior connectivity and network engineers.
                 </p>
 
@@ -458,51 +466,51 @@ export default function App() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-3.5">
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Full Name</label>
+                      <label className="block text-xs font-[500] text-slate-700 mb-1">Full Name</label>
                       <input
                         required
                         type="text"
                         value={formData.name}
                         onChange={e => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Work Email</label>
+                      <label className="block text-xs font-[500] text-slate-700 mb-1">Work Email</label>
                       <input
                         required
                         type="email"
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@company.com"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Company</label>
+                      <label className="block text-xs font-[500] text-slate-700 mb-1">Company</label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={e => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Acme Inc."
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Message</label>
+                      <label className="block text-xs font-[500] text-slate-700 mb-1">Message</label>
                       <textarea
                         rows={3}
                         value={formData.message}
                         onChange={e => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Tell us about your requirements..."
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
                       ></textarea>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full py-2.5 rounded-lg bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-medium text-xs transition-colors cursor-pointer"
+                      className="w-full min-h-[44px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] transition-colors cursor-pointer"
                     >
                       Send Request
                     </button>
@@ -517,10 +525,10 @@ export default function App() {
               if (!cs) return null;
               return (
                 <div>
-                  <span className="text-[11px] font-semibold text-[#0b5cd5] uppercase tracking-wider block mb-1">Case Study</span>
-                  <div className="text-[36px] font-bold text-[#0a0a0a] mb-2">{cs.metric}</div>
-                  <h3 className="text-[18px] font-semibold text-[#0a0a0a] mb-3 leading-snug">{cs.title}</h3>
-                  <p className="text-[13px] text-slate-600 leading-relaxed whitespace-pre-line mb-5">
+                  <span className="text-[12px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">Case Study</span>
+                  <div className="text-[44px] font-[500] text-[#0a0a0a] mb-2 leading-none">{cs.metric}</div>
+                  <h3 className="text-[18px] font-[600] text-[#0a0a0a] mb-3 leading-snug">{cs.title}</h3>
+                  <p className="text-[14px] text-slate-600 leading-relaxed whitespace-pre-line mb-5">
                     {cs.fullText}
                   </p>
                   <div className="p-3.5 rounded-lg bg-blue-50/60 border border-blue-100 text-xs text-[#0b5cd5]">
@@ -536,15 +544,15 @@ export default function App() {
               if (!art) return null;
               return (
                 <div>
-                  <span className="text-[11px] font-semibold text-[#0b5cd5] uppercase tracking-wider block mb-1">
+                  <span className="text-[12px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">
                     Engineers' Diary · {art.readTime}
                   </span>
-                  <h3 className="text-[20px] font-bold text-[#0a0a0a] mb-2 leading-snug">{art.title}</h3>
-                  <p className="text-[12px] text-slate-500 mb-4">Written by {art.author}</p>
+                  <h3 className="text-[20px] font-[600] text-[#0a0a0a] mb-2 leading-snug">{art.title}</h3>
+                  <p className="text-[13px] text-slate-500 mb-4">Written by {art.author}</p>
                   <div className="rounded-xl overflow-hidden mb-4 h-48">
                     <img src={art.image} alt="" className="w-full h-full object-cover" />
                   </div>
-                  <p className="text-[13px] text-slate-700 leading-relaxed whitespace-pre-line">
+                  <p className="text-[14px] text-slate-700 leading-relaxed whitespace-pre-line">
                     {art.content}
                   </p>
                 </div>
@@ -554,8 +562,8 @@ export default function App() {
             {/* Terms Modal */}
             {activeModal === 'terms' && (
               <div>
-                <h3 className="text-[20px] font-bold text-[#0a0a0a] mb-3">Terms & Conditions</h3>
-                <div className="space-y-3 text-[12px] text-slate-600 max-h-80 overflow-y-auto pr-2 leading-relaxed">
+                <h3 className="text-[20px] font-[600] text-[#0a0a0a] mb-3">Terms & Conditions</h3>
+                <div className="space-y-3 text-[13px] text-slate-600 max-h-80 overflow-y-auto pr-2 leading-relaxed">
                   <p><strong>1. Application and entire agreement</strong><br />1.1 These Terms and Conditions apply to the provision of the goods & services detailed in our quotation by Optimus Networks Ltd (company registered in England and Wales under number 10191532).</p>
                   <p><strong>2. Services</strong><br />We warrant that we will use reasonable care and skill in our performance of the Services which will comply with the quotation.</p>
                   <p><strong>3. Payment & Fees</strong><br />Payment of Fees is due within 30 days of the date of invoice.</p>
