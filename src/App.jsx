@@ -409,14 +409,12 @@ export default function App() {
       </section>
 
       {/* 7. HIGH IMPACT BRAND STATEMENT (CENTERED) */}
-      <section className="border-t border-[#e8eaed] py-24 sm:py-32 bg-white">
-        <div className="max-w-[820px] mx-auto px-6 text-center">
-          <h2 className="text-[26px] sm:text-[32px] lg:text-[36px] font-[500] text-[#0a0a0a] leading-[1.32em] tracking-[-0.03em]">
-            Optimus designs and delivers connectivity solutions<br className="hidden sm:inline" />{" "}
-            by bringing structure, consistency, and engineering<br className="hidden sm:inline" />{" "}
-            discipline to every solution,{" "}
+      <section className="bg-[#fafafa] border-t border-b border-[#e8eaed] py-[100px] sm:py-[140px] lg:py-[165px] px-6">
+        <div className="max-w-[1026px] mx-auto text-center">
+          <h2 className="text-[28px] sm:text-[36px] lg:text-[43px] font-[500] text-[#0a0a0a] leading-[1.25em] tracking-[-0.03em]">
+            Optimus designs and delivers connectivity solutions by bringing structure, consistency, and engineering discipline to every solution,{" "}
             <span className="text-[#0b5cd5] font-[600]">
-              ensuring quality is never<br className="hidden sm:inline" /> compromised,
+              ensuring quality is never compromised,
             </span>{" "}
             even as customer needs evolve.
           </h2>
@@ -424,30 +422,30 @@ export default function App() {
       </section>
 
       {/* 8. ENGINEERS' DIARY (ARTICLES) */}
-      <section className="border-t border-[#e8eaed] py-20 bg-white">
+      <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
-          <div className="max-w-xl mx-auto text-center mb-14">
-            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-2 block">
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
               ARTICLES
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-3">
+            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
               Engineers’ Diary
             </h2>
-            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em]">
-              How we put leading technology to work, from secure remote access to always-on connectivity.
+            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
+              How we put leading technology to work, from secure remote access to<br className="hidden sm:inline" /> always-on connectivity.
             </p>
           </div>
 
-          {/* 3 Article Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Unified 3-Column Container with 1px dividers and 16px rounded outer border */}
+          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-[1px] w-full shadow-none">
             {articles.map((art) => (
               <div
                 key={art.id}
                 onClick={() => setActiveModal(art.id)}
-                className="bg-white border border-[#e8eaed] rounded-[16px] overflow-hidden hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
+                className="bg-white flex flex-col justify-between cursor-pointer group"
               >
-                <div className="h-[200px] overflow-hidden bg-slate-100">
+                <div className="h-[210px] overflow-hidden bg-slate-100">
                   <img
                     src={art.image}
                     alt={art.title}
@@ -455,12 +453,12 @@ export default function App() {
                   />
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-[32px_28px] sm:p-[36px_32px] flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] mb-3 leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
                       {art.title}
                     </h3>
-                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] mb-6">
+                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] mb-8">
                       {art.description}
                     </p>
                   </div>
