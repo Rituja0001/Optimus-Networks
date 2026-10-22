@@ -174,27 +174,44 @@ export default function App() {
 
       {/* 3. HERO SECTION */}
       <section className="max-w-[1140px] mx-auto px-6 pt-16 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Text Column */}
-          <div className="lg:col-span-7">
-            <h1 className="text-[38px] sm:text-[48px] lg:text-[50px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em]">
+          <div className="lg:col-span-6 xl:col-span-7">
+            <h1 className="text-[38px] sm:text-[46px] lg:text-[50px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em]">
               Global <span className="text-[#0b5cd5]">connectivity</span><br />
               <span className="text-[#0b5cd5]">solutions</span> designed to<br />
-              be <span className="underline decoration-[#0a0a0a] decoration-[1.5px] underline-offset-[5px]">simple and secure.</span>
+              be <span className="relative inline-block">
+                simple and secure.
+                <svg
+                  className="absolute left-0 -bottom-2.5 w-full h-[14px] pointer-events-none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 400 16"
+                >
+                  <path
+                    fill="none"
+                    stroke="#0A0A0A"
+                    strokeDasharray="60 34 400"
+                    strokeLinecap="round"
+                    strokeWidth="5"
+                    d="M4 10c86-3 206-4 392-2"
+                  />
+                </svg>
+              </span>
             </h1>
 
-            <p className="mt-6 text-[18px] text-[#1f2328] font-[400] tracking-[-0.005em] leading-[1.6em] max-w-[520px]">
+            <p className="mt-6 text-[16px] text-[#1f2328] font-[400] tracking-[-0.005em] leading-[1.6em] max-w-[420px]">
               Connectivity redefined through engineering discipline, a culture of continual quality, and intelligent automation.
             </p>
 
-            {/* Buttons */}
-            <div className="mt-8 flex items-center gap-3">
+            {/* Buttons Row with equal 50/50 width */}
+            <div className="mt-8 flex items-center gap-[10px] max-w-[420px] w-full">
               <button
                 onClick={() => {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="min-h-[44px] px-[12px] gap-[10px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
+                className="flex-1 min-h-[44px] h-[48px] px-[12px] gap-[10px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
                 <span>Solutions</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -207,26 +224,21 @@ export default function App() {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="min-h-[44px] px-[12px] rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-[500] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
+                className="flex-1 min-h-[44px] h-[48px] px-[12px] rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-[500] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
                 <span>Find out more</span>
               </button>
             </div>
           </div>
 
-          {/* Right Image Card */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-[16px] overflow-hidden border border-[#e8eaed] bg-white shadow-xs aspect-4/3 lg:aspect-auto lg:h-[380px]">
+          {/* Right Image Container - Exact 8px border-radius, 440px height, no border, no watermark */}
+          <div className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end">
+            <div className="w-full max-w-[544px] h-[320px] sm:h-[390px] lg:h-[440px] rounded-[8px] overflow-hidden relative">
               <img
                 src="https://framerusercontent.com/images/PmHnsCbroKk29n1lRAkBqY2oXc.jpg?width=1200"
                 alt="Optimus Engineering"
                 className="w-full h-full object-cover object-center"
               />
-              <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-xs text-white p-1 rounded">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </div>
             </div>
           </div>
         </div>
