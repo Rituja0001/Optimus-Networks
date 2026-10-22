@@ -303,33 +303,33 @@ export default function App() {
       </section>
 
       {/* 5. SERVICES & SOLUTIONS */}
-      <section id="solutions" className="py-20 sm:py-24 bg-white">
+      <section id="solutions" className="py-16 sm:py-24 bg-white">
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
-          <div className="max-w-xl mx-auto text-center mb-16">
+          <div className="max-w-2xl mx-auto text-center mb-16">
             <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
               SOLUTIONS
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-4">
+            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
               Services & Solutions
             </h2>
-            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em] max-w-[340px] mx-auto text-balance">
-              A connectivity service partner that replaces complexity with clarity.
+            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[340px] mx-auto">
+              A connectivity service partner that<br className="hidden sm:inline" /> replaces complexity with clarity.
             </p>
           </div>
 
-          {/* Unified 4x2 Grid Container with 1px dividers and 16px rounded outer border */}
-          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] w-full shadow-none">
+          {/* Unified 4x2 Grid Container with 1px dividers and 20px rounded outer border */}
+          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] w-full shadow-none">
             {services.map((srv, idx) => (
               <div
                 key={idx}
-                className="bg-white p-[36px_24px_40px_26px] sm:p-[40px_24px_44px_28px] flex flex-col items-start justify-start"
+                className="bg-white p-[36px_24px_42px_26px] sm:p-[40px_24px_44px_28px] flex flex-col items-start justify-start"
               >
                 {/* Clean SVG icon without background box, with bottom spacing */}
-                <div className="w-[30px] h-[30px] mb-[20px] flex items-center justify-start">
+                <div className="w-[30px] h-[30px] mb-[22px] flex items-center justify-start">
                   <img src={srv.icon} alt="" className="w-[30px] h-[30px] object-contain" />
                 </div>
-                <h3 className="text-[16px] font-[600] text-[#0a0a0a] tracking-[-0.01em] leading-[1.3em] mb-[10px]">
+                <h3 className="text-[16px] font-[600] text-[#0a0a0a] tracking-[-0.01em] leading-[1.3em] mb-[12px]">
                   {srv.title}
                 </h3>
                 <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em]">
