@@ -100,6 +100,9 @@ export default function App() {
     {
       id: 'case-1',
       brand: "tailscale",
+      logoUrl: "https://framerusercontent.com/images/W4KrtgVmMLZk5NUZmPg5EmssYFM.svg?width=375&height=120",
+      logoWidth: 88,
+      logoHeight: 28,
       metric: "442 users",
       description: "to roll out Tailscale, with zero impact on firewalls, site-to-site VPNs or customer VPNs.",
       title: "Bringing Tailscale to an existing network without replacing a single firewall.",
@@ -108,6 +111,9 @@ export default function App() {
     {
       id: 'case-2',
       brand: "peplink",
+      logoUrl: "https://framerusercontent.com/images/AxQbM1SZQGVraYoq2tlCQcJtfYU.svg?width=1012&height=512",
+      logoWidth: 56,
+      logoHeight: 28,
       metric: "6 global DC",
       description: "fibre, 4G and 5G bonded into one connection, with WAN smoothing keeping calls steady.",
       title: "Resilient Multi-cloud & Multi-link Connectivity",
@@ -116,6 +122,9 @@ export default function App() {
     {
       id: 'case-3',
       brand: "peplink",
+      logoUrl: "https://framerusercontent.com/images/LAOwGq6EOwwkD2xC1bX9P1W5p8.svg?width=1012&height=512",
+      logoWidth: 56,
+      logoHeight: 28,
       metric: "2 paths",
       description: "Fibre and Starlink bonded on a Peplink with WAN smoothing, so a remote trader never drops.",
       title: "Bonding fibre and Starlink so a remote trader never drops a trade.",
@@ -342,52 +351,54 @@ export default function App() {
       </section>
 
       {/* 6. CASE STUDIES */}
-      <section className="border-t border-[#e8eaed] py-20 bg-white">
+      <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-[1140px] mx-auto px-6">
           {/* Section Header - Centered */}
-          <div className="max-w-xl mx-auto text-center mb-14">
-            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-2 block">
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
               USE CASES
             </span>
-            <h2 className="text-[34px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em] mb-3">
+            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
               Case Studies
             </h2>
-            <p className="text-[16px] font-[400] text-[#1f2328] tracking-[-0.005em] leading-[1.6em]">
-              How we put leading technology to work, from secure remote access to always-on connectivity.
+            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
+              How we put leading technology to work, from secure remote access to<br className="hidden sm:inline" /> always-on connectivity.
             </p>
           </div>
 
-          {/* 3 Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Unified 3-Column Container with 1px dividers, 16px rounded outer border */}
+          <div className="bg-[#e8eaed] border border-[#e8eaed] rounded-[16px] overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-[1px] w-full shadow-none">
             {caseStudies.map((cs) => (
               <div
                 key={cs.id}
-                className="bg-[#fcfdfe] border border-[#e8eaed] rounded-[16px] p-[40px] flex flex-col justify-between hover:shadow-md transition-all"
+                className="bg-white p-[36px_28px] sm:p-[40px] flex flex-col justify-between"
               >
                 <div>
-                  {/* Brand Tag at top */}
-                  <div className="text-[12px] font-semibold text-slate-800 tracking-wider mb-6 flex items-center gap-1.5">
-                    {cs.brand === 'tailscale' && (
-                      <span className="font-bold">::: tailscale</span>
-                    )}
-                    {cs.brand === 'peplink' && (
-                      <span className="font-bold">peplink</span>
-                    )}
+                  {/* Exact SVG Brand Logo at top */}
+                  <div
+                    className="mb-[24px] flex items-center justify-start"
+                    style={{ width: `${cs.logoWidth}px`, height: `${cs.logoHeight}px` }}
+                  >
+                    <img
+                      src={cs.logoUrl}
+                      alt={cs.brand}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
 
                   {/* Large Metric */}
-                  <div className="text-[50px] font-[500] tracking-[-0.045em] text-[#000000] leading-[1em] mb-4">
+                  <div className="text-[48px] sm:text-[50px] font-[500] tracking-[-0.045em] text-[#000000] leading-[1em] mb-[16px]">
                     {cs.metric}
                   </div>
 
-                  <p className="text-[18px] font-[400] text-[#4b5563] tracking-[-0.01em] leading-[1.45em] mb-8">
+                  <p className="text-[17px] sm:text-[18px] font-[400] text-[#4b5563] tracking-[-0.01em] leading-[1.45em] mb-[32px]">
                     {cs.description}
                   </p>
                 </div>
 
                 <button
                   onClick={() => setActiveModal(cs.id)}
-                  className="text-[16px] font-[500] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] text-left cursor-pointer hover:text-[#0b5cd5] hover:decoration-[#0b5cd5] transition-colors"
+                  className="text-[16px] font-[500] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] text-left cursor-pointer hover:text-[#0b5cd5] hover:decoration-[#0b5cd5] transition-colors inline-block"
                 >
                   Read case study
                 </button>
