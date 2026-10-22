@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null); // 'assessment' | 'contact' | 'terms' | 'case-1' | 'case-2' | 'case-3' | 'article-1' | 'article-2' | 'article-3'
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -163,32 +164,32 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white">
+    <div className="min-h-screen bg-white text-[#1f2328] selection:bg-[#0b5cd5] selection:text-white overflow-x-hidden">
       {/* 1. TOP ANNOUNCEMENT BANNER */}
       <div 
         onClick={() => setActiveModal('assessment')}
-        className="w-full bg-[#0b5cd5] text-white py-3.5 px-4 text-center cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1.5 z-20 group"
+        className="w-full bg-[#0b5cd5] text-white py-2.5 sm:py-3.5 px-3 sm:px-4 text-center cursor-pointer hover:bg-[#0952c2] transition-colors relative flex items-center justify-center gap-1.5 z-20 group"
       >
-        <span className="text-[15px] font-[500] tracking-[-0.02em] leading-[1.4em]">
+        <span className="text-[13px] sm:text-[15px] font-[500] tracking-[-0.02em] leading-[1.35em] sm:leading-[1.4em]">
           Speak to one of our engineers to get a free firewall assessment →
         </span>
       </div>
 
       {/* 2. NAVBAR */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#e8eaed]">
-        <div className="max-w-[1140px] mx-auto px-6 h-[72px] flex items-center justify-between">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 h-[60px] sm:h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center text-[25px] leading-none tracking-[-0.03em] select-none text-[#0b5cd5]">
+          <a href="#" className="flex items-center text-[21px] sm:text-[25px] leading-none tracking-[-0.03em] select-none text-[#0b5cd5]">
             <span className="font-[400]">Optimus</span>
             <span className="font-[600]">Networks</span>
           </a>
 
           {/* Right Navigation Actions */}
-          <div className="flex items-center gap-[24px]">
-            {/* Support Link */}
+          <div className="flex items-center gap-3 sm:gap-[24px]">
+            {/* Support Link (Desktop & Tablet) */}
             <a
               href="tel:+443330164050"
-              className="flex items-center gap-2 text-[16px] font-[500] tracking-[-0.02em] leading-[1.4em] text-[#0a0a0a] hover:text-[#0b5cd5] transition-colors select-none"
+              className="hidden sm:flex items-center gap-2 text-[15px] sm:text-[16px] font-[500] tracking-[-0.02em] leading-[1.4em] text-[#0a0a0a] hover:text-[#0b5cd5] transition-colors select-none"
             >
               <div className="relative w-[8px] h-[8px]">
                 <span className="animate-pulse-ring absolute inset-0 rounded-full bg-[#22c55e]"></span>
@@ -200,29 +201,96 @@ export default function App() {
             {/* Contact Sales Button */}
             <button
               onClick={() => setActiveModal('contact')}
-              className="min-h-[44px] px-[12px] gap-[8px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
+              className="min-h-[38px] sm:min-h-[44px] px-[10px] sm:px-[12px] gap-[6px] sm:gap-[8px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[14px] sm:text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
             >
               <span>Contact Sales</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <svg width="14" height="14" className="sm:w-4 sm:h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M6 3.5L10.5 8 6 12.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
+
+            {/* Mobile Menu Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="sm:hidden w-[38px] h-[38px] flex flex-col items-center justify-center gap-1 rounded-[4px] border border-[#e8eaed] text-[#0a0a0a] hover:bg-slate-50 cursor-pointer"
+              aria-label="Toggle navigation menu"
+            >
+              <span className={`w-4 h-[2px] bg-[#0a0a0a] transition-all duration-200 ${mobileMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`}></span>
+              <span className={`w-4 h-[2px] bg-[#0a0a0a] transition-all duration-200 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-4 h-[2px] bg-[#0a0a0a] transition-all duration-200 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`}></span>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="sm:hidden border-t border-[#e8eaed] bg-white px-4 py-4 space-y-3 shadow-lg">
+            <a
+              href="tel:+443330164050"
+              className="flex items-center gap-2.5 py-2 text-[15px] font-[500] text-[#0a0a0a] hover:text-[#0b5cd5]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <div className="relative w-[8px] h-[8px]">
+                <span className="animate-pulse-ring absolute inset-0 rounded-full bg-[#22c55e]"></span>
+                <span className="absolute inset-0 rounded-full bg-[#22c55e]"></span>
+              </div>
+              <span>Support (0333 016 4050)</span>
+            </a>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('solutions');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
+            >
+              Services & Solutions
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('use-cases');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
+            >
+              Case Studies
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById('articles');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
+            >
+              Engineers’ Diary
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setActiveModal('assessment');
+              }}
+              className="w-full text-left py-2 text-[15px] font-[600] text-[#0b5cd5] block"
+            >
+              Free Firewall Assessment →
+            </button>
+          </div>
+        )}
       </header>
 
       {/* 3. HERO SECTION */}
-      <section className="max-w-[1140px] mx-auto px-6 pt-16 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <section className="max-w-[1140px] mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-14 sm:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 xl:col-span-7">
-            <h1 className="text-[38px] sm:text-[46px] lg:text-[50px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.12em]">
+          <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <h1 className="text-[32px] sm:text-[42px] lg:text-[50px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.14em] sm:leading-[1.12em]">
               Global <span className="text-[#0b5cd5]">connectivity</span><br />
               <span className="text-[#0b5cd5]">solutions</span> designed to<br />
               be <span className="relative inline-block">
                 simple and secure.
                 <svg
-                  className="absolute left-0 -bottom-2.5 w-full h-[14px] pointer-events-none"
+                  className="absolute left-0 -bottom-2 sm:-bottom-2.5 w-full h-[10px] sm:h-[14px] pointer-events-none"
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="none"
                   viewBox="0 0 400 16"
@@ -239,21 +307,21 @@ export default function App() {
               </span>
             </h1>
 
-            <p className="mt-6 text-[16px] text-[#1f2328] font-[400] tracking-[-0.005em] leading-[1.6em] max-w-[420px]">
+            <p className="mt-5 sm:mt-6 text-[15px] sm:text-[16px] text-[#1f2328] font-[400] tracking-[-0.005em] leading-[1.6em] max-w-[420px]">
               Connectivity redefined through engineering discipline, a culture of continual quality, and intelligent automation.
             </p>
 
             {/* Buttons Row with equal 50/50 width */}
-            <div className="mt-8 flex items-center gap-[10px] max-w-[420px] w-full">
+            <div className="mt-7 sm:mt-8 flex items-center gap-[10px] max-w-[420px] w-full justify-center lg:justify-start">
               <button
                 onClick={() => {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex-1 min-h-[44px] h-[48px] px-[12px] gap-[10px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
+                className="flex-1 min-h-[44px] h-[44px] sm:h-[48px] px-3 sm:px-[12px] gap-[8px] sm:gap-[10px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[14px] sm:text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
                 <span>Solutions</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M6 3.5L10.5 8 6 12.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
@@ -263,16 +331,16 @@ export default function App() {
                   const el = document.getElementById('solutions');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex-1 min-h-[44px] h-[48px] px-[12px] rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-[500] text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
+                className="flex-1 min-h-[44px] h-[44px] sm:h-[48px] px-3 sm:px-[12px] rounded-[4px] border border-[#0b5cd5] bg-white text-[#0b5cd5] hover:bg-blue-50/50 font-[500] text-[14px] sm:text-[16px] tracking-[-0.02em] whitespace-nowrap flex items-center justify-center cursor-pointer transition-colors shadow-xs active:scale-[0.99]"
               >
                 <span>Find out more</span>
               </button>
             </div>
           </div>
 
-          {/* Right Image Container - Exact 8px border-radius, 440px height, no border, no watermark */}
-          <div className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[544px] h-[320px] sm:h-[390px] lg:h-[440px] rounded-[8px] overflow-hidden relative">
+          {/* Right Image Container - Exact 8px border-radius, responsive height */}
+          <div className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end w-full">
+            <div className="w-full max-w-[544px] h-[260px] sm:h-[360px] lg:h-[440px] rounded-[8px] overflow-hidden relative shadow-xs">
               <img
                 src="https://framerusercontent.com/images/PmHnsCbroKk29n1lRAkBqY2oXc.jpg?width=1200"
                 alt="Optimus Engineering"
@@ -284,26 +352,26 @@ export default function App() {
       </section>
 
       {/* 4. PARTNERS SECTION */}
-      <section className="bg-white pt-2 pb-20 px-6">
-        <div className="max-w-[1140px] mx-auto flex flex-col items-center justify-center gap-[32px]">
-          <p className="text-[16px] font-[400] tracking-[-0.02em] leading-[1.4em] text-[#4b5563] text-center">
+      <section className="bg-white pt-2 pb-14 sm:pb-20 px-4 sm:px-6">
+        <div className="max-w-[1140px] mx-auto flex flex-col items-center justify-center gap-6 sm:gap-[32px]">
+          <p className="text-[14px] sm:text-[16px] font-[400] tracking-[-0.02em] leading-[1.4em] text-[#4b5563] text-center">
             Partnered with leading vendors globally
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-[56px] w-full">
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10 lg:gap-[56px] w-full">
             {partners.map((p) => (
               <a
                 key={p.name}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center hover:opacity-75 transition-opacity"
-                style={{ width: `${p.width}px`, height: `${p.height}px` }}
+                className="flex items-center justify-center hover:opacity-75 transition-opacity shrink-0"
               >
                 <img
                   src={p.logo}
                   alt={p.name}
-                  className="w-full h-full object-contain"
+                  className="h-[18px] sm:h-[22px] lg:h-auto max-w-[85px] sm:max-w-[120px] lg:max-w-none object-contain"
+                  style={{ maxHeight: `${p.height}px` }}
                 />
               </a>
             ))}
@@ -312,17 +380,17 @@ export default function App() {
       </section>
 
       {/* 5. SERVICES & SOLUTIONS */}
-      <section id="solutions" className="py-20 sm:py-24 bg-[#fafafa] border-t border-b border-[#e8eaed]">
-        <div className="max-w-[1140px] mx-auto px-6">
+      <section id="solutions" className="py-14 sm:py-20 lg:py-24 bg-[#fafafa] border-t border-b border-[#e8eaed]">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
           {/* Section Header - Centered */}
-          <div className="max-w-2xl mx-auto text-center mb-16">
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
             <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
               SOLUTIONS
             </span>
-            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
+            <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
               Services & Solutions
             </h2>
-            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[340px] mx-auto">
+            <p className="text-[15px] sm:text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[340px] mx-auto">
               A connectivity service partner that<br className="hidden sm:inline" /> replaces complexity with clarity.
             </p>
           </div>
@@ -332,10 +400,10 @@ export default function App() {
             {services.map((srv, idx) => (
               <div
                 key={idx}
-                className="bg-white p-[36px_24px_42px_26px] sm:p-[40px_24px_44px_28px] flex flex-col items-start justify-start"
+                className="bg-white p-[28px_20px_32px] sm:p-[36px_24px_42px_26px] lg:p-[40px_24px_44px_28px] flex flex-col items-start justify-start"
               >
                 {/* Clean SVG icon without background box, with bottom spacing */}
-                <div className="w-[30px] h-[30px] mb-[22px] flex items-center justify-start">
+                <div className="w-[30px] h-[30px] mb-[20px] sm:mb-[22px] flex items-center justify-start">
                   <img src={srv.icon} alt="" className="w-[30px] h-[30px] object-contain" />
                 </div>
                 <h3 className="text-[16px] font-[600] text-[#0a0a0a] tracking-[-0.01em] leading-[1.3em] mb-[12px]">
@@ -351,17 +419,17 @@ export default function App() {
       </section>
 
       {/* 6. CASE STUDIES */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-[1140px] mx-auto px-6">
+      <section id="use-cases" className="py-14 sm:py-20 lg:py-28 bg-white">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
           {/* Section Header - Centered */}
-          <div className="max-w-2xl mx-auto text-center mb-16">
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
             <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] uppercase mb-3 block">
               USE CASES
             </span>
-            <h2 className="text-[36px] sm:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
+            <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-[600] tracking-[-0.035em] text-[#0a0a0a] leading-[1.15em] mb-3">
               Case Studies
             </h2>
-            <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
+            <p className="text-[15px] sm:text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
               How we put leading technology to work, from secure remote access to always-on connectivity.
             </p>
           </div>
@@ -371,12 +439,12 @@ export default function App() {
             {caseStudies.map((cs) => (
               <div
                 key={cs.id}
-                className="bg-white p-[36px_28px] sm:p-[40px] flex flex-col justify-between"
+                className="bg-white p-[28px_20px_32px] sm:p-[36px_28px] lg:p-[40px] flex flex-col justify-between"
               >
                 <div>
                   {/* Exact SVG Brand Logo at top */}
                   <div
-                    className="mb-[24px] flex items-center justify-start"
+                    className="mb-[20px] sm:mb-[24px] flex items-center justify-start"
                     style={{ width: `${cs.logoWidth}px`, height: `${cs.logoHeight}px` }}
                   >
                     <img
@@ -387,11 +455,11 @@ export default function App() {
                   </div>
 
                   {/* Large Metric */}
-                  <div className="text-[48px] sm:text-[50px] font-[500] tracking-[-0.045em] text-[#000000] leading-[1em] mb-[16px]">
+                  <div className="text-[40px] sm:text-[48px] lg:text-[50px] font-[500] tracking-[-0.045em] text-[#000000] leading-[1em] mb-[14px] sm:mb-[16px]">
                     {cs.metric}
                   </div>
 
-                  <p className="text-[17px] sm:text-[18px] font-[400] text-[#4b5563] tracking-[-0.01em] leading-[1.45em] mb-[32px]">
+                  <p className="text-[16px] sm:text-[17px] lg:text-[18px] font-[400] text-[#4b5563] tracking-[-0.01em] leading-[1.45em] mb-[28px] sm:mb-[32px]">
                     {cs.description}
                   </p>
                 </div>
@@ -409,9 +477,9 @@ export default function App() {
       </section>
 
       {/* 7. HIGH IMPACT BRAND STATEMENT (CENTERED) */}
-      <section className="bg-[#fafafa] border-t border-b border-[#e8eaed] py-[100px] sm:py-[140px] lg:py-[165px] px-6">
+      <section className="bg-[#fafafa] border-t border-b border-[#e8eaed] py-[72px] sm:py-[120px] lg:py-[165px] px-4 sm:px-6">
         <div className="max-w-[1026px] mx-auto text-center">
-          <h2 className="text-[28px] sm:text-[36px] lg:text-[43px] font-[500] text-[#0a0a0a] leading-[1.25em] tracking-[-0.03em]">
+          <h2 className="text-[22px] sm:text-[32px] lg:text-[43px] font-[500] text-[#0a0a0a] leading-[1.3em] sm:leading-[1.25em] tracking-[-0.03em]">
             Optimus designs and delivers connectivity solutions by bringing structure, consistency, and engineering discipline to every solution,{" "}
             <span className="text-[#0b5cd5] font-[600]">
               ensuring quality is never compromised,
@@ -422,16 +490,16 @@ export default function App() {
       </section>
 
       {/* 8. ENGINEERS' DIARY (ARTICLES) */}
-      <section className="pt-[64px] pb-[64px] sm:pt-[110px] sm:pb-[104px] px-[20px] sm:px-[30px] bg-white flex flex-col items-center gap-[40px] sm:gap-[56px]">
+      <section id="articles" className="pt-[56px] pb-[56px] sm:pt-[110px] sm:pb-[104px] px-4 sm:px-[30px] bg-white flex flex-col items-center gap-[36px] sm:gap-[56px]">
         {/* Section Header - Centered */}
-        <div className="max-w-[680px] w-full mx-auto text-center flex flex-col items-center gap-[16px]">
+        <div className="max-w-[680px] w-full mx-auto text-center flex flex-col items-center gap-[14px] sm:gap-[16px]">
           <span className="text-[14px] font-[600] text-[#0b5cd5] tracking-[0.08em] leading-[1.4em] uppercase block">
             ARTICLES
           </span>
           <h2 className="text-[28px] sm:text-[40px] font-[600] tracking-[-0.03em] text-[#0a0a0a] leading-[1.2em] sm:leading-[1.15em] [text-wrap:balance]">
             Engineers’ Diary
           </h2>
-          <p className="text-[18px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] w-[92%] sm:w-[78%] max-w-[530px] mx-auto [text-wrap:balance]">
+          <p className="text-[16px] sm:text-[18px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] w-[94%] sm:w-[78%] max-w-[530px] mx-auto [text-wrap:balance]">
             How we put leading technology to work, from<br className="hidden sm:inline" /> secure remote access to always-on connectivity.
           </p>
         </div>
@@ -445,7 +513,7 @@ export default function App() {
               className="bg-white flex flex-col justify-start items-stretch cursor-pointer group"
             >
               {/* Card Image */}
-              <div className="w-full h-[220px] relative overflow-hidden bg-slate-100 flex-none">
+              <div className="w-full h-[190px] sm:h-[220px] relative overflow-hidden bg-slate-100 flex-none">
                 <img
                   src={art.image}
                   alt={art.title}
@@ -454,22 +522,22 @@ export default function App() {
               </div>
 
               {/* Card Content with 1px top border and exact spacing */}
-              <div className="border-t border-[#e8eaed] p-[28px_28px_32px] flex-1 flex flex-col justify-between gap-[14px]">
-                <div className="flex flex-col gap-[14px]">
-                  <div className="min-h-[52px]">
-                    <h3 className="text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
+              <div className="border-t border-[#e8eaed] p-[24px_20px_28px] sm:p-[28px_28px_32px] flex-1 flex flex-col justify-between gap-[14px]">
+                <div className="flex flex-col gap-[12px] sm:gap-[14px]">
+                  <div className="min-h-[46px] sm:min-h-[52px]">
+                    <h3 className="text-[18px] sm:text-[20px] font-[600] text-[#0a0a0a] tracking-[-0.02em] leading-[1.3em] group-hover:text-[#0b5cd5] transition-colors">
                       {art.title}
                     </h3>
                   </div>
-                  <div className="min-h-[72px]">
-                    <p className="text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em]">
+                  <div className="min-h-[64px] sm:min-h-[72px]">
+                    <p className="text-[14px] sm:text-[15px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em]">
                       {art.description}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <span className="text-[16px] font-[600] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] group-hover:text-[#0b5cd5] group-hover:decoration-[#0b5cd5] transition-colors inline-block">
+                  <span className="text-[15px] sm:text-[16px] font-[600] tracking-[-0.01em] leading-[1.4em] text-[#1f2328] underline decoration-[#1f2328] underline-offset-[5px] decoration-[1.5px] group-hover:text-[#0b5cd5] group-hover:decoration-[#0b5cd5] transition-colors inline-block">
                     Read article
                   </span>
                 </div>
@@ -478,10 +546,9 @@ export default function App() {
           ))}
         </div>
       </section>
-
       {/* 9. FOOTER */}
-      <footer className="border-t border-[#e8eaed] bg-white py-8">
-        <div className="max-w-[1140px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4b5563]">
+      <footer className="border-t border-[#e8eaed] bg-white py-6 sm:py-8">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4b5563] text-center sm:text-left">
           <p className="font-[600] tracking-[0.05em] text-[#0a0a0a]">OPTIMUS NETWORKS LTD</p>
           <div className="flex items-center gap-4">
             <button
@@ -496,11 +563,12 @@ export default function App() {
 
       {/* 10. INTERACTIVE MODALS */}
       {activeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-          <div className="bg-white rounded-[16px] max-w-lg w-full p-7 max-h-[90vh] overflow-y-auto border border-[#e8eaed] shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/40 backdrop-blur-xs">
+          <div className="bg-white rounded-[16px] max-w-lg w-full p-5 sm:p-7 max-h-[90vh] overflow-y-auto border border-[#e8eaed] shadow-2xl relative">
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors cursor-pointer text-sm font-bold"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors cursor-pointer text-sm font-bold"
+              aria-label="Close dialog"
             >
               ✕
             </button>
@@ -511,10 +579,10 @@ export default function App() {
                 <span className="text-[11px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">
                   {activeModal === 'assessment' ? 'Free Assessment' : 'Contact Sales'}
                 </span>
-                <h3 className="text-[22px] font-[700] text-[#0a0a0a] mb-2">
+                <h3 className="text-[20px] sm:text-[22px] font-[700] text-[#0a0a0a] mb-2 leading-snug">
                   {activeModal === 'assessment' ? 'Get a Free Firewall Assessment' : 'Speak to an Optimus Engineer'}
                 </h3>
-                <p className="text-[14px] text-[#4b5563] mb-5 leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] text-[#4b5563] mb-5 leading-relaxed">
                   Direct consultation with our senior connectivity and network engineers.
                 </p>
 
@@ -534,7 +602,7 @@ export default function App() {
                         value={formData.name}
                         onChange={e => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-[16px] sm:text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
@@ -545,7 +613,7 @@ export default function App() {
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@company.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-[16px] sm:text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
@@ -555,7 +623,7 @@ export default function App() {
                         value={formData.company}
                         onChange={e => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Acme Inc."
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-[16px] sm:text-sm focus:outline-none focus:border-[#0b5cd5]"
                       />
                     </div>
                     <div>
@@ -565,13 +633,13 @@ export default function App() {
                         value={formData.message}
                         onChange={e => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Tell us about your requirements..."
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0b5cd5]"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-[16px] sm:text-sm focus:outline-none focus:border-[#0b5cd5]"
                       ></textarea>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full min-h-[44px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[16px] tracking-[-0.02em] transition-colors cursor-pointer"
+                      className="w-full min-h-[44px] rounded-[4px] bg-[#0b5cd5] hover:bg-[#0952c2] text-white font-[600] text-[15px] sm:text-[16px] tracking-[-0.02em] transition-colors cursor-pointer"
                     >
                       Send Request
                     </button>
@@ -587,9 +655,9 @@ export default function App() {
               return (
                 <div>
                   <span className="text-[12px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">Case Study</span>
-                  <div className="text-[44px] font-[500] text-[#0a0a0a] mb-2 leading-none">{cs.metric}</div>
-                  <h3 className="text-[18px] font-[600] text-[#0a0a0a] mb-3 leading-snug">{cs.title}</h3>
-                  <p className="text-[14px] text-slate-600 leading-relaxed whitespace-pre-line mb-5">
+                  <div className="text-[36px] sm:text-[44px] font-[500] text-[#0a0a0a] mb-2 leading-none">{cs.metric}</div>
+                  <h3 className="text-[17px] sm:text-[18px] font-[600] text-[#0a0a0a] mb-3 leading-snug">{cs.title}</h3>
+                  <p className="text-[13px] sm:text-[14px] text-slate-600 leading-relaxed whitespace-pre-line mb-5">
                     {cs.fullText}
                   </p>
                   <div className="p-3.5 rounded-lg bg-blue-50/60 border border-blue-100 text-xs text-[#0b5cd5]">
@@ -608,12 +676,12 @@ export default function App() {
                   <span className="text-[12px] font-[600] text-[#0b5cd5] uppercase tracking-wider block mb-1">
                     Engineers' Diary · {art.readTime}
                   </span>
-                  <h3 className="text-[20px] font-[600] text-[#0a0a0a] mb-2 leading-snug">{art.title}</h3>
-                  <p className="text-[13px] text-slate-500 mb-4">Written by {art.author}</p>
-                  <div className="rounded-xl overflow-hidden mb-4 h-48">
+                  <h3 className="text-[18px] sm:text-[20px] font-[600] text-[#0a0a0a] mb-2 leading-snug">{art.title}</h3>
+                  <p className="text-[12px] sm:text-[13px] text-slate-500 mb-4">Written by {art.author}</p>
+                  <div className="rounded-xl overflow-hidden mb-4 h-40 sm:h-48">
                     <img src={art.image} alt="" className="w-full h-full object-cover" />
                   </div>
-                  <p className="text-[14px] text-slate-700 leading-relaxed whitespace-pre-line">
+                  <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed whitespace-pre-line">
                     {art.content}
                   </p>
                 </div>
@@ -623,8 +691,8 @@ export default function App() {
             {/* Terms Modal */}
             {activeModal === 'terms' && (
               <div>
-                <h3 className="text-[20px] font-[600] text-[#0a0a0a] mb-3">Terms & Conditions</h3>
-                <div className="space-y-3 text-[13px] text-slate-600 max-h-80 overflow-y-auto pr-2 leading-relaxed">
+                <h3 className="text-[18px] sm:text-[20px] font-[600] text-[#0a0a0a] mb-3">Terms & Conditions</h3>
+                <div className="space-y-3 text-[12px] sm:text-[13px] text-slate-600 max-h-80 overflow-y-auto pr-2 leading-relaxed">
                   <p><strong>1. Application and entire agreement</strong><br />1.1 These Terms and Conditions apply to the provision of the goods & services detailed in our quotation by Optimus Networks Ltd (company registered in England and Wales under number 10191532).</p>
                   <p><strong>2. Services</strong><br />We warrant that we will use reasonable care and skill in our performance of the Services which will comply with the quotation.</p>
                   <p><strong>3. Payment & Fees</strong><br />Payment of Fees is due within 30 days of the date of invoice.</p>
