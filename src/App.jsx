@@ -362,7 +362,7 @@ export default function App() {
               Case Studies
             </h2>
             <p className="text-[16px] font-[400] text-[#4b5563] tracking-[-0.005em] leading-[1.6em] max-w-[440px] mx-auto">
-              How we put leading technology to work, from secure remote access to<br className="hidden sm:inline" /> always-on connectivity.
+              How we put leading technology to work, from secure remote access to always-on connectivity.
             </p>
           </div>
 
@@ -409,11 +409,15 @@ export default function App() {
       </section>
 
       {/* 7. HIGH IMPACT BRAND STATEMENT (CENTERED) */}
-      <section className="border-t border-[#e8eaed] py-24 bg-white">
-        <div className="max-w-[920px] mx-auto px-6 text-center">
-          <h2 className="text-[28px] sm:text-[34px] font-[600] text-[#0a0a0a] leading-[1.2em] tracking-[-0.03em]">
-            Optimus designs and delivers connectivity solutions by bringing structure, consistency, and engineering discipline to every solution,{" "}
-            <span className="text-[#0b5cd5]">ensuring quality is never compromised,</span>{" "}
+      <section className="border-t border-[#e8eaed] py-24 sm:py-32 bg-white">
+        <div className="max-w-[820px] mx-auto px-6 text-center">
+          <h2 className="text-[26px] sm:text-[32px] lg:text-[36px] font-[500] text-[#0a0a0a] leading-[1.32em] tracking-[-0.03em]">
+            Optimus designs and delivers connectivity solutions<br className="hidden sm:inline" />{" "}
+            by bringing structure, consistency, and engineering<br className="hidden sm:inline" />{" "}
+            discipline to every solution,{" "}
+            <span className="text-[#0b5cd5] font-[600]">
+              ensuring quality is never<br className="hidden sm:inline" /> compromised,
+            </span>{" "}
             even as customer needs evolve.
           </h2>
         </div>
