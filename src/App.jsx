@@ -1,10 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import TermsPage from './TermsPage';
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.pathname === '/terms' ? '/terms' : '/';
+    }
+    return '/';
+  });
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeModal, setActiveModal] = useState(null); // 'assessment' | 'contact' | 'terms' | 'case-1' | 'case-2' | 'case-3' | 'article-1' | 'article-2' | 'article-3'
+  const [activeModal, setActiveModal] = useState(null); // 'assessment' | 'contact' | 'case-1' | 'case-2' | 'case-3' | 'article-1' | 'article-2' | 'article-3'
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname === '/terms' ? '/terms' : '/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (path, targetId = null) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    if (path === '/') {
+      if (targetId) {
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -179,7 +213,14 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#e8eaed]">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 h-[60px] sm:h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center text-[21px] sm:text-[25px] leading-none tracking-[-0.03em] select-none text-[#0b5cd5]">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo('/');
+            }}
+            className="flex items-center text-[21px] sm:text-[25px] leading-none tracking-[-0.03em] select-none text-[#0b5cd5]"
+          >
             <span className="font-[400]">Optimus</span>
             <span className="font-[600]">Networks</span>
           </a>
@@ -239,8 +280,7 @@ export default function App() {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                const el = document.getElementById('solutions');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                navigateTo('/', 'solutions');
               }}
               className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
             >
@@ -249,8 +289,7 @@ export default function App() {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                const el = document.getElementById('use-cases');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                navigateTo('/', 'use-cases');
               }}
               className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
             >
@@ -259,13 +298,23 @@ export default function App() {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                const el = document.getElementById('articles');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                navigateTo('/', 'articles');
               }}
               className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
             >
               Engineers’ Diary
             </button>
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                navigateTo('/terms');
+              }}
+              className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
+            >
+              Terms & Conditions
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -279,7 +328,15 @@ export default function App() {
         )}
       </header>
 
-      {/* 3. HERO SECTION */}
+      {/* CONDITIONAL CONTENT: Terms Page vs Home Page */}
+      {currentPath === '/terms' ? (
+        <TermsPage
+          onNavigateHome={() => navigateTo('/')}
+          onOpenModal={(modal) => setActiveModal(modal)}
+        />
+      ) : (
+        <>
+          {/* 3. HERO SECTION */}
       <section className="max-w-[1140px] mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-14 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
           {/* Left Text Column */}
@@ -546,17 +603,24 @@ export default function App() {
           ))}
         </div>
       </section>
+        </>
+      )}
+
       {/* 9. FOOTER */}
       <footer className="border-t border-[#e8eaed] bg-white py-6 sm:py-8">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4b5563] text-center sm:text-left">
           <p className="font-[600] tracking-[0.05em] text-[#0a0a0a]">OPTIMUS NETWORKS LTD</p>
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => setActiveModal('terms')}
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('/terms');
+              }}
               className="font-[500] hover:text-[#0b5cd5] transition-colors cursor-pointer"
             >
               Terms
-            </button>
+            </a>
           </div>
         </div>
       </footer>
