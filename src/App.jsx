@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TermsPage from './TermsPage';
+import NetSecHiTouchPage from './NetSecHiTouchPage';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.location.pathname === '/terms' ? '/terms' : '/';
+      const p = window.location.pathname;
+      if (p === '/terms') return '/terms';
+      if (p === '/netsec-hitouch') return '/netsec-hitouch';
+      return '/';
     }
     return '/';
   });
@@ -16,7 +20,10 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname === '/terms' ? '/terms' : '/');
+      const p = window.location.pathname;
+      if (p === '/terms') setCurrentPath('/terms');
+      else if (p === '/netsec-hitouch') setCurrentPath('/netsec-hitouch');
+      else setCurrentPath('/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     window.addEventListener('popstate', handlePopState);
@@ -226,7 +233,19 @@ export default function App() {
           </a>
 
           {/* Right Navigation Actions */}
-          <div className="flex items-center gap-3 sm:gap-[24px]">
+          <div className="flex items-center gap-3 sm:gap-[20px] lg:gap-[24px]">
+            {/* NetSec HiTouch Link (Desktop) */}
+            <a
+              href="/netsec-hitouch"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('/netsec-hitouch');
+              }}
+              className="hidden md:inline-flex items-center text-[15px] sm:text-[16px] font-[500] tracking-[-0.02em] leading-[1.4em] text-[#0a0a0a] hover:text-[#0b5cd5] transition-colors select-none"
+            >
+              <span>NetSec HiTouch</span>
+            </a>
+
             {/* Support Link (Desktop & Tablet) */}
             <a
               href="tel:+443330164050"
@@ -286,6 +305,17 @@ export default function App() {
             >
               Services & Solutions
             </button>
+            <a
+              href="/netsec-hitouch"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                navigateTo('/netsec-hitouch');
+              }}
+              className="w-full text-left py-2 text-[15px] font-[500] text-[#4b5563] hover:text-[#0b5cd5] block"
+            >
+              NetSec HiTouch
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -328,10 +358,15 @@ export default function App() {
         )}
       </header>
 
-      {/* CONDITIONAL CONTENT: Terms Page vs Home Page */}
+      {/* CONDITIONAL CONTENT: Terms Page vs NetSec HiTouch vs Home Page */}
       {currentPath === '/terms' ? (
         <TermsPage
           onNavigateHome={() => navigateTo('/')}
+          onOpenModal={(modal) => setActiveModal(modal)}
+        />
+      ) : currentPath === '/netsec-hitouch' ? (
+        <NetSecHiTouchPage
+          onNavigate={(path) => navigateTo(path)}
           onOpenModal={(modal) => setActiveModal(modal)}
         />
       ) : (
@@ -611,6 +646,17 @@ export default function App() {
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4b5563] text-center sm:text-left">
           <p className="font-[600] tracking-[0.05em] text-[#0a0a0a]">OPTIMUS NETWORKS LTD</p>
           <div className="flex items-center gap-4">
+            <a
+              href="/netsec-hitouch"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('/netsec-hitouch');
+              }}
+              className="font-[500] hover:text-[#0b5cd5] transition-colors cursor-pointer"
+            >
+              NetSec HiTouch
+            </a>
+            <span className="text-[#e8eaed]">|</span>
             <a
               href="/terms"
               onClick={(e) => {
